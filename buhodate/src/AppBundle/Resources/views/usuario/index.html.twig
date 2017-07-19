@@ -1,0 +1,76 @@
+{% extends "::layout.html.twig" %}
+
+{% block title %}BuhoDate | ESFOT{% endblock %}
+
+{% block body %}
+    <div class="container">
+        {#Header logo y navegación#}
+        <div class="row" id="menu">
+            <div class="col-lg-4 col-md-3 col-sm-12">
+                <img class="logo" src="{{ asset('image/logo1.png') }}" alt="logo buho">
+            </div>
+            <div class="col-lg-8 col-md-9 col-sm-12 ">
+                <ul class="nav" id="index-menu">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Buscar Cita</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Demostración</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Contactos</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        {# Video de Fondo#}
+        <div class="row fondo">
+            <div class="col">
+                <video autoplay loop class="video">
+                    <source src="{{ asset('videos/MP4/Yes-No.mp4') }}" type="video/mp4" />Your browser does not support the video tag. I suggest you upgrade your browser.
+                    <source src="{{ asset('videos/WEBM/Yes-No.webm') }}" type="video/webm" />Your browser does not support the video tag. I suggest you upgrade your browser.
+                </video>
+            </div>
+        </div>
+        {# Texto de Bienvenida #}
+        <div class="row pos">
+            <div class="col-2 social">
+                <div class="row">
+                    <div class="col">
+                        <a href=""><i class="fa fa-facebook fa-2x" aria-hidden="true"></i></a>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col">
+                        <a href=""><i class="fa fa-instagram fa-2x" aria-hidden="true"></i></a>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col">
+                        <a href=""><i class="fa fa-twitter fa-2x" aria-hidden="true"></i></a>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col">
+                        <a href=""><i class="fa fa-google-plus fa-2x" aria-hidden="true"></i></a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-10">
+                <div class="row">
+                    <div class="col msj1">
+                        <h1 class="text-white">La cita de tus sueños</h1>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col distancia">
+                        <button class="boton1">Buscar Cita</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+{% endblock %}

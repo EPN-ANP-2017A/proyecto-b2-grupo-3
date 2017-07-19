@@ -6,32 +6,39 @@ use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
 
 class usuarioControllerTest extends WebTestCase
 {
-    public function testReg_uss()
+    public function testIndex()
     {
         $client = static::createClient();
 
-        $crawler = $client->request('GET', '/reg_uss');
+        $crawler = $client->request('GET', '/index');
     }
 
-    public function testMod_uss()
+    public function testRegistro()
     {
         $client = static::createClient();
 
-        $crawler = $client->request('GET', '/mod_uss');
+        $crawler = $client->request('GET', '/registro');
     }
 
-    public function testMod_pass()
+    public function testModificar()
     {
         $client = static::createClient();
 
-        $crawler = $client->request('GET', '/mod_pass');
+        $crawler = $client->request('GET', '/modificar');
     }
 
-    public function testElim_uss()
+    public function testModpass()
     {
         $client = static::createClient();
 
-        $crawler = $client->request('GET', '/elim_uss');
+        $crawler = $client->request('GET', '/modpass');
+    }
+
+    public function testEliminar()
+    {
+        $client = static::createClient();
+
+        $crawler = $client->request('GET', '/eliminar');
     }
 
 }

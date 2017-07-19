@@ -8,40 +8,32 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 class galeriaController extends Controller
 {
     /**
-     * @Route("/crear_foto")
+     * @Route("/crearg")
      */
-    public function crear_fotoAction()
+    public function crearAction()
     {
-        $foto="";
-        $descripcion="";
-        $estado="activo";
-        return $this->render('AppBundle:galeria:crear.foto.html.twig', array(
-            'foto'=>$foto,
-            'descripcion'=>$descripcion,
-            'estado'=>$estado
+        return $this->render('AppBundle:galeria:crear.html.twig', array(
+            // ...
         ));
     }
 
     /**
-     * @Route("/mod_foto")
+     * @Route("/modificarg")
      */
-    public function mod_fotoAction()
+    public function modificarAction()
     {
-        $descripcion="";
-
-        return $this->render('AppBundle:galeria:mod.foto.html.twig', array(
-            'descripcion'=>$descripcion,
+        return $this->render('AppBundle:galeria:modificar.html.twig', array(
+            // ...
         ));
     }
 
     /**
-     * @Route("/elim_foto")
+     * @Route("/eliminaerg")
      */
-    public function elim_fotoAction()
+    public function eliminarAction()
     {
-        $estado="inactivo";
-        return $this->render('AppBundle:galeria:elim.foto.html.twig', array(
-            'estado'=>$estado
+        return $this->render('AppBundle:galeria:eliminar.html.twig', array(
+            // ...
         ));
     }
 

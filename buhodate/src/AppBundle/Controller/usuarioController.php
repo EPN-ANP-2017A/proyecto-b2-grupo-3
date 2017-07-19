@@ -8,80 +8,52 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 class usuarioController extends Controller
 {
     /**
-     * @Route("/reg_uss")
+     * @Route("/index")
      */
-    public function reg_ussAction()
+    public function indexAction()
     {
-        $correo = "";
-        $pass = "";
-        $alias="";
-        $estado="activo";
-        return $this->render('AppBundle:usuario:reg.uss.html.twig', array(
-            'correo'=>$correo,
-            'pass'=>$pass,
-            'alias'=>$alias,
-            'estado'=>$estado
-
+        return $this->render('AppBundle:usuario:index.html.twig', array(
+            // ...
         ));
     }
 
     /**
-     * @Route("/mod_uss")
+     * @Route("/registro")
      */
-    public function mod_ussAction()
+    public function registroAction()
     {
-        $nombre="";
-        $apellido="";
-        $alias="";
-        $telefono="";
-        $sexo="";
-        $foto="";
-        $fecha_nac="";
-        $pais="";
-        $provincia="";
-        $ciudad="";
-        $direccion="";
-        $carrera="";
-        $descripcion="";
-
-        return $this->render('AppBundle:usuario:mod.uss.html.twig', array(
-            'nombre'=>$nombre,
-            'apellido'=>$apellido,
-            'alias'=>$alias,
-            'telefono'=>$telefono,
-            'sexo'=>$sexo,
-            'foto'=>$foto,
-            'fecha_nac'=>$fecha_nac,
-            'pais'=>$pais,
-            'provincia'=>$provincia,
-            'ciudad'=>$ciudad,
-            'direccion'=>$direccion,
-            'carrera'=>$carrera,
-            'descripcion'=>$descripcion
+        return $this->render('AppBundle:usuario:registro.html.twig', array(
+            // ...
         ));
     }
 
     /**
-     * @Route("/mod_pass")
+     * @Route("/modificar")
      */
-    public function mod_passAction()
+    public function modificarAction()
     {
-        $pass="";
-
-        return $this->render('AppBundle:usuario:mod.pass.html.twig', array(
-            'pass'=>$pass
+        return $this->render('AppBundle:usuario:modificar.html.twig', array(
+            // ...
         ));
     }
 
     /**
-     * @Route("/elim_uss")
+     * @Route("/modpass")
      */
-    public function elim_ussAction()
+    public function modpassAction()
     {
-        $estado="inactivo";
+        return $this->render('AppBundle:usuario:modpass.html.twig', array(
+            // ...
+        ));
+    }
 
-        return $this->render('AppBundle:usuario:elim.uss.html.twig', array(
-            'estado'=>$estado
+    /**
+     * @Route("/eliminar")
+     */
+    public function eliminarAction()
+    {
+        return $this->render('AppBundle:usuario:eliminar.html.twig', array(
+            // ...
         ));
     }
 

@@ -6,25 +6,25 @@ use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
 
 class galeriaControllerTest extends WebTestCase
 {
-    public function testCrear_foto()
+    public function testCrear()
     {
         $client = static::createClient();
 
-        $crawler = $client->request('GET', '/crear_foto');
+        $crawler = $client->request('GET', '/crear');
     }
 
-    public function testMod_foto()
+    public function testModificar()
     {
         $client = static::createClient();
 
-        $crawler = $client->request('GET', '/mod_foto');
+        $crawler = $client->request('GET', '/modificarg');
     }
 
-    public function testElim_foto()
+    public function testEliminar()
     {
         $client = static::createClient();
 
-        $crawler = $client->request('GET', '/elim_foto');
+        $crawler = $client->request('GET', '/eliminaerg');
     }
 
 }

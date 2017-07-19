@@ -51,9 +51,4 @@ class AppKernel extends Kernel
     {
         $loader->load($this->getRootDir().'/config/config_'.$this->getEnvironment().'.yml');
     }
-    public function __construct($environment, $debug)
-    {
-        date_default_timezone_set( 'America/Guayaquil' );
-        parent::__construct($environment, $debug);
-    }
 }

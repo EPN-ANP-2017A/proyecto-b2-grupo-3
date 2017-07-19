@@ -8,49 +8,32 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 class citaController extends Controller
 {
     /**
-     * @Route("/crear_cita")
+     * @Route("/crearc")
      */
-    public function crear_citaAction()
+    public function crearAction()
     {
-        $id_emisor="";
-        $id_receptor="";
-        $estado="pendiente";
-        $fecha_inicio="";
-
-        return $this->render('AppBundle:cita:crear.cita.html.twig', array(
-            'id_emisor'=>$id_emisor,
-            'id_receptor'=>$id_receptor,
-            'estado'=>$estado,
-            'fecha_inicio'=>$fecha_inicio
+        return $this->render('AppBundle:cita:crear.html.twig', array(
+            // ...
         ));
     }
 
     /**
-     * @Route("/mod_cita")
+     * @Route("/modificarc")
      */
-    public function mod_citaAction()
+    public function modificarAction()
     {
-        $fecha_fin="";
-        $direccion="";
-        $calificacion="";
-        $estado="aceptada";
-
-        return $this->render('AppBundle:cita:mod.cita.html.twig', array(
-            'fecha_fin'=>$fecha_fin,
-            'direccion'=>$direccion,
-            'calificacion'=>$calificacion,
-            'estado'=>$estado
+        return $this->render('AppBundle:cita:modificar.html.twig', array(
+            // ...
         ));
     }
 
     /**
-     * @Route("/can_cita")
+     * @Route("/cancelarc")
      */
-    public function can_citaAction()
+    public function cancelarAction()
     {
-        $estado="cancelada";
-        return $this->render('AppBundle:cita:can.cita.html.twig', array(
-            'estado'=>$estado
+        return $this->render('AppBundle:cita:cancelar.html.twig', array(
+            // ...
         ));
     }
 

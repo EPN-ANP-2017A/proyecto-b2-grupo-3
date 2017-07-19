@@ -8,44 +8,32 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 class preferenciaController extends Controller
 {
     /**
-     * @Route("/crear_pref")
+     * @Route("/crearp")
      */
-    public function crear_prefAction()
+    public function crearAction()
     {
-        $nombre="";
-        $descripcion="";
-        $estado="activo";
-
-        return $this->render('AppBundle:preferencia:crear.pref.html.twig', array(
-            'nombre'=>$nombre,
-            'descripcion'=>$descripcion,
-            'estado'=>$estado
+        return $this->render('AppBundle:preferencia:crear.html.twig', array(
+            // ...
         ));
     }
 
     /**
-     * @Route("/mod_pref")
+     * @Route("/modificarp")
      */
-    public function mod_prefAction()
+    public function modificarpAction()
     {
-        $nombre="";
-        $descripcion="";
-
-        return $this->render('AppBundle:preferencia:mod.pref.html.twig', array(
-            'nombre'=>$nombre,
-            'descripcion'=>$descripcion
+        return $this->render('AppBundle:preferencia:modificarp.html.twig', array(
+            // ...
         ));
     }
 
     /**
-     * @Route("/elim_pref")
+     * @Route("/eliminarp")
      */
-    public function elim_prefAction()
+    public function eliminarAction()
     {
-        $estado="activo";
-
-        return $this->render('AppBundle:preferencia:elim.pref.html.twig', array(
-            'estado'=>$estado
+        return $this->render('AppBundle:preferencia:eliminar.html.twig', array(
+            // ...
         ));
     }
 

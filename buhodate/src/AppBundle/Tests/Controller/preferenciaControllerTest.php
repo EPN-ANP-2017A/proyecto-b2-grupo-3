@@ -6,25 +6,25 @@ use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
 
 class preferenciaControllerTest extends WebTestCase
 {
-    public function testCrear_pref()
+    public function testCrear()
     {
         $client = static::createClient();
 
-        $crawler = $client->request('GET', '/crear_pref');
+        $crawler = $client->request('GET', '/crearp');
     }
 
-    public function testMod_pref()
+    public function testModificarp()
     {
         $client = static::createClient();
 
-        $crawler = $client->request('GET', '/mod_pref');
+        $crawler = $client->request('GET', '/modificarp');
     }
 
-    public function testElim_pref()
+    public function testEliminar()
     {
         $client = static::createClient();
 
-        $crawler = $client->request('GET', '/elim_pref');
+        $crawler = $client->request('GET', '/eliminarp');
     }
 
 }

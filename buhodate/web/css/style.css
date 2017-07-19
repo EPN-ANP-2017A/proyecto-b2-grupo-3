@@ -1,0 +1,66 @@
+body, h1{
+    font-family: 'Didact Gothic', sans-serif;
+}
+#menu{
+    padding: 1% 0;
+}
+#index-menu .nav-link{
+    color: #ff7a55;
+    font-family: 'Parisienne', cursive;
+    font-size: 30px;
+    font-weight: 100;
+}
+#index-menu .nav-link:hover{
+    color: gray;
+}
+.logo{
+    max-width: 250px;
+    height: 80px;
+}
+.video{
+    max-width: 100%;
+    opacity: 0.8;
+}
+
+.boton1{
+    width: 45%;
+    height: 50px;
+    background: #ff7a55;
+    border: none;
+    border-radius: 25px;
+    font-size: 25px;
+    color: #ffffff;
+    opacity: 0.8;
+    padding: 1%;
+}
+.distancia{
+    padding-left: 25%;
+}
+i{
+    color: #ffffff;
+    padding-bottom: 10%;
+}
+a{
+    font-size: 20px;
+
+}
+a:hover{
+    color:#ff7a55;
+}
+.msj1{
+    padding-left: 10%;
+    margin-top: 15%;
+}
+.msj1 h1{
+    font-size: 400%;
+}
+.fondo{
+    position: absolute;
+}
+.pos{
+    z-index: 200;
+}
+.social{
+    margin-top: 20%;
+    padding-left: 2%;
+}
