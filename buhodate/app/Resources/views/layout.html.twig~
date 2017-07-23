@@ -9,9 +9,6 @@
         <link rel="stylesheet" href="{{ asset('css/font-awesome.min.css') }}">
         <link rel="stylesheet" href="{{ asset('css/normalize.css') }}">
         <link rel="stylesheet" href="{{ asset('css/style.css') }}">
-	    <link rel="stylesheet" href="{{ asset('css/perfil.css') }}">
-	    <link rel="stylesheet" href="{{ asset('css/modificar_perfil.css') }}">
-	    
     {% endblock %}
 </head>
 <body>
