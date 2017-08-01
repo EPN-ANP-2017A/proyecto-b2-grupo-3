@@ -57,14 +57,16 @@ class usuarioController extends Controller
         ));
     }
 
-     /**
-     * @Route("/perfil")
+    /**
+     * @Route("/perfil/{idUsuario}")
      */
-    public function perfilAction()
+    public function perfilAction($idUsuario)
     {
+        $usuario=$this->getDoctrine()
+            ->getRepository('AppBundle:usuario')
+            ->find($idUsuario);
         return $this->render('AppBundle:usuario:perfil.html.twig', array(
-            // ...
+            'usuario'=>$usuario
         ));
     }
-
 }
