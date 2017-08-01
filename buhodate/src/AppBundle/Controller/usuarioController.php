@@ -135,6 +135,7 @@ class usuarioController extends Controller
     }
 
     /**
+<<<<<<< HEAD
      * Deletes a usuario entity.
      *
      * @Route("/{id}", name="usuario_delete")
@@ -169,4 +170,17 @@ class usuarioController extends Controller
             ->getForm()
         ;
     }
+=======
+     * @Route("/perfil/{idUsuario}")
+     */
+    public function perfilAction($idUsuario)
+    {
+        $usuario=$this->getDoctrine()
+            ->getRepository('AppBundle:usuario')
+            ->find($idUsuario);
+        return $this->render('AppBundle:usuario:perfil.html.twig', array(
+            'usuario'=>$usuario
+        ));
+    }
+>>>>>>> 4ba1e4fdbccff14b22f8fb226b1a4694bb9a89ae
 }
