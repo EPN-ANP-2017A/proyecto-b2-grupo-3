@@ -512,5 +512,72 @@ class usuario
     {
         return $this->estado;
     }
-}
 
+    /**
+     * Add citum
+     *
+     * @param \AppBundle\Entity\cita $citum
+     *
+     * @return usuario
+     */
+    public function addCitum(\AppBundle\Entity\cita $citum)
+    {
+        $this->cita[] = $citum;
+
+        return $this;
+    }
+
+    /**
+     * Remove citum
+     *
+     * @param \AppBundle\Entity\cita $citum
+     */
+    public function removeCitum(\AppBundle\Entity\cita $citum)
+    {
+        $this->cita->removeElement($citum);
+    }
+
+    /**
+     * Get cita
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getCita()
+    {
+        return $this->cita;
+    }
+
+    /**
+     * Add galerium
+     *
+     * @param \AppBundle\Entity\galeria $galerium
+     *
+     * @return usuario
+     */
+    public function addGalerium(\AppBundle\Entity\galeria $galerium)
+    {
+        $this->galeria[] = $galerium;
+
+        return $this;
+    }
+
+    /**
+     * Remove galerium
+     *
+     * @param \AppBundle\Entity\galeria $galerium
+     */
+    public function removeGalerium(\AppBundle\Entity\galeria $galerium)
+    {
+        $this->galeria->removeElement($galerium);
+    }
+
+    /**
+     * Get galeria
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getGaleria()
+    {
+        return $this->galeria;
+    }
+}
