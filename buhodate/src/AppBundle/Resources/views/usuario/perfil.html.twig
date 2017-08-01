@@ -72,7 +72,8 @@
                         Alias: {{ usuario.getAlias}}
                     </li>
                     <li class="list-group-item justify-content-between">
-                        Edad:
+                        Edad: {{ usuario.getFnaci |date("m-d-Y") }}
+
                     </li>
                     <li class="list-group-item justify-content-between">
                         Telefono: {{ usuario.getfono}}
