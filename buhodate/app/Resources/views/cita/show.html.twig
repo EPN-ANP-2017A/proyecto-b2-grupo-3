@@ -1,0 +1,56 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Citum</h1>
+
+    <table>
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ citum.id }}</td>
+            </tr>
+            <tr>
+                <th>Idemisor</th>
+                <td>{{ citum.idEmisor }}</td>
+            </tr>
+            <tr>
+                <th>Idreceptor</th>
+                <td>{{ citum.idReceptor }}</td>
+            </tr>
+            <tr>
+                <th>Estado</th>
+                <td>{{ citum.estado }}</td>
+            </tr>
+            <tr>
+                <th>Finicio</th>
+                <td>{% if citum.fInicio %}{{ citum.fInicio|date('Y-m-d H:i:s') }}{% endif %}</td>
+            </tr>
+            <tr>
+                <th>Ffin</th>
+                <td>{% if citum.fFin %}{{ citum.fFin|date('Y-m-d H:i:s') }}{% endif %}</td>
+            </tr>
+            <tr>
+                <th>Direccion</th>
+                <td>{{ citum.direccion }}</td>
+            </tr>
+            <tr>
+                <th>Calificacion</th>
+                <td>{{ citum.calificacion }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('cita_index') }}">Back to the list</a>
+        </li>
+        <li>
+            <a href="{{ path('cita_edit', { 'id': citum.id }) }}">Edit</a>
+        </li>
+        <li>
+            {{ form_start(delete_form) }}
+                <input type="submit" value="Delete">
+            {{ form_end(delete_form) }}
+        </li>
+    </ul>
+{% endblock %}

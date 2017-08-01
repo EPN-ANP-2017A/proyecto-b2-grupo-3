@@ -2,69 +2,171 @@
 
 namespace AppBundle\Controller;
 
+use AppBundle\Entity\usuario;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
+use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\Security\Http\Authentication\AuthenticationUtils;
 
+/**
+ * Usuario controller.
+ *
+ * @Route("usuario")
+ */
 class usuarioController extends Controller
 {
     /**
-     * @Route("/index")
+     * Lists all usuario entities.
+     *
+     * @Route("/", name="usuario_index")
+     * @Method("GET")
      */
-    public function indexAction()
+    public function indexAction(Request $request)
     {
-        return $this->render('AppBundle:usuario:index.html.twig', array(
-            // ...
+        $usuario = new Usuario();
+        $form = $this->createForm('AppBundle\Form\usuarioType', $usuario);
+        $form->handleRequest($request);
+
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            $usuario = $form->getData();
+            $usuario->setEstado('activo');
+            $em = $this->getDoctrine()->getManager();
+            $em->persist($usuario);
+            $em->flush();
+
+            return $this->redirectToRoute('usuario_show', array('id' => $usuario->getId()));
+        }
+
+        return $this->render('usuario/index.html.twig', array(
+            'usuario' => $usuario,
+            'form' => $form->createView(),
         ));
     }
 
     /**
-     * @Route("/registro")
+     * Lists all usuario entities.
+     *
+     * @Route("/login", name="usuario_login")
+     * @Method("GET")
      */
-    public function registroAction()
+    public function loginAction(Request $request, AuthenticationUtils $authUtils )
     {
-        return $this->render('AppBundle:usuario:registro.html.twig', array(
-            // ...
+        // Obtiene el error si hay uno
+        $error = $authUtils->getLastAuthenticationError();
+
+        // Ultimo nombre de usuario  ingresado por el usuario
+        $lastUsername = $authUtils->getLastUsername();
+
+        return $this->render('usuario/login.html.twig', array(
+            'last_username' => $lastUsername,
+            'error'         => $error,
         ));
     }
 
     /**
-     * @Route("/modificar")
+     * Creates a new usuario entity.
+     *
+     * @Route("/new", name="usuario_new")
+     * @Method({"GET", "POST"})
      */
-    public function modificarAction()
+    public function newAction(Request $request)
     {
-        return $this->render('AppBundle:usuario:modificar.html.twig', array(
-            // ...
+        $usuario = new Usuario();
+        $form = $this->createForm('AppBundle\Form\usuarioType', $usuario);
+        $form->handleRequest($request);
+
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            $usuario->setEstado('activo');
+            $em = $this->getDoctrine()->getManager();
+            $em->persist($usuario);
+            $em->flush();
+
+            return $this->redirectToRoute('usuario_show', array('id' => $usuario->getId()));
+        }
+
+        return $this->render('usuario/new.html.twig', array(
+            'usuario' => $usuario,
+            'form' => $form->createView(),
         ));
     }
 
     /**
-     * @Route("/modpass")
+     * Finds and displays a usuario entity.
+     *
+     * @Route("/{id}", name="usuario_show")
+     * @Method("GET")
      */
-    public function modpassAction()
+    public function showAction(usuario $usuario)
     {
-        return $this->render('AppBundle:usuario:modpass.html.twig', array(
-            // ...
+        $deleteForm = $this->createDeleteForm($usuario);
+
+        return $this->render('usuario/show.html.twig', array(
+            'usuario' => $usuario,
+            'delete_form' => $deleteForm->createView(),
         ));
     }
 
     /**
-     * @Route("/eliminar")
+     * Displays a form to edit an existing usuario entity.
+     *
+     * @Route("/{id}/edit", name="usuario_edit")
+     * @Method({"GET", "POST"})
      */
-    public function eliminarAction()
+    public function editAction(Request $request, usuario $usuario)
     {
-        return $this->render('AppBundle:usuario:eliminar.html.twig', array(
-            // ...
+        $deleteForm = $this->createDeleteForm($usuario);
+        $editForm = $this->createForm('AppBundle\Form\usuarioType', $usuario);
+        $editForm->handleRequest($request);
+
+        if ($editForm->isSubmitted() && $editForm->isValid()) {
+            $this->getDoctrine()->getManager()->flush();
+
+            return $this->redirectToRoute('usuario_edit', array('id' => $usuario->getId()));
+        }
+
+        return $this->render('usuario/edit.html.twig', array(
+            'usuario' => $usuario,
+            'edit_form' => $editForm->createView(),
+            'delete_form' => $deleteForm->createView(),
         ));
     }
 
-     /**
-     * @Route("/perfil")
+    /**
+     * Deletes a usuario entity.
+     *
+     * @Route("/{id}", name="usuario_delete")
+     * @Method("DELETE")
      */
-    public function perfilAction()
+    public function deleteAction(Request $request, usuario $usuario)
     {
-        return $this->render('AppBundle:usuario:perfil.html.twig', array(
-            // ...
-        ));
+        $form = $this->createDeleteForm($usuario);
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            $em = $this->getDoctrine()->getManager();
+            $em->remove($usuario);
+            $em->flush();
+        }
+
+        return $this->redirectToRoute('usuario_index');
     }
 
+    /**
+     * Creates a form to delete a usuario entity.
+     *
+     * @param usuario $usuario The usuario entity
+     *
+     * @return \Symfony\Component\Form\Form The form
+     */
+    private function createDeleteForm(usuario $usuario)
+    {
+        return $this->createFormBuilder()
+            ->setAction($this->generateUrl('usuario_delete', array('id' => $usuario->getId())))
+            ->setMethod('DELETE')
+            ->getForm()
+        ;
+    }
 }

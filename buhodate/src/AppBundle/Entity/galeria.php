@@ -53,6 +53,9 @@ class galeria
      * @ORM\ManyToOne(targetEntity="usuario", inversedBy="galeria")
      * @ORM\JoinColumn(name="usuario_id", referencedColumnName="id")
      */
+
+    //join table many to many
+
     private $usuario;
 
     /**

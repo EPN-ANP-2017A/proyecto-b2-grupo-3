@@ -1,0 +1,44 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Galerium</h1>
+
+    <table>
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ galerium.id }}</td>
+            </tr>
+            <tr>
+                <th>Foto</th>
+                <td>{{ galerium.foto }}</td>
+            </tr>
+            <tr>
+                <th>Descripcion</th>
+                <td>{{ galerium.descripcion }}</td>
+            </tr>
+            <tr>
+                <th>Estado</th>
+                <td>{{ galerium.estado }}</td>
+            </tr>
+            <tr>
+                <th>Tipo</th>
+                <td>{{ galerium.tipo }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('galeria_index') }}">Back to the list</a>
+        </li>
+        <li>
+            <a href="{{ path('galeria_edit', { 'id': galerium.id }) }}">Edit</a>
+        </li>
+        <li>
+            {{ form_start(delete_form) }}
+                <input type="submit" value="Delete">
+            {{ form_end(delete_form) }}
+        </li>
+    </ul>
+{% endblock %}
