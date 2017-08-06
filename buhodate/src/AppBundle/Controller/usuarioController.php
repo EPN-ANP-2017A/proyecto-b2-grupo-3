@@ -17,6 +17,21 @@ use Symfony\Component\Security\Http\Authentication\AuthenticationUtils;
 class usuarioController extends Controller
 {
     /**
+     * @Route("/buscar", name="buscar_usuario")
+     * @Method("GET")
+     */
+    public function buscarAction()
+    {
+        $em = $this->getDoctrine()->getManager();
+
+        $usuarios = $em->getRepository('AppBundle:usuario')->findAll();
+
+        return $this->render('usuario/buscador.html.twig', array(
+            'usuarios' => $usuarios,
+        ));
+    }
+
+    /**
      * Lists all usuario entities.
      *
      * @Route("/", name="usuario_index")
@@ -79,6 +94,7 @@ class usuarioController extends Controller
 
 
         if ($form->isSubmitted() && $form->isValid()) {
+
             $usuario->setEstado('activo');
             $em = $this->getDoctrine()->getManager();
             $em->persist($usuario);
@@ -110,11 +126,29 @@ class usuarioController extends Controller
     }
 
     /**
+     * @Route("/buscar/{sexo}", name="buscar_usuarioS")
+     * @Method("GET")
+     */
+    public function buscarSAction($sexo)
+    {
+        $em = $this->getDoctrine()->getManager();
+
+        $usuarios = $em->getRepository('AppBundle:usuario')->findBy(array('sexo'=> $sexo));
+
+        return $this->render('usuario/buscador.html.twig', array(
+            'usuarios' => $usuarios,
+        ));
+    }
+
+
+    /**
      * Displays a form to edit an existing usuario entity.
      *
      * @Route("/{id}/edit", name="usuario_edit")
      * @Method({"GET", "POST"})
      */
+
+
     public function editAction(Request $request, usuario $usuario)
     {
         $deleteForm = $this->createDeleteForm($usuario);
@@ -135,7 +169,6 @@ class usuarioController extends Controller
     }
 
     /**
-<<<<<<< HEAD
      * Deletes a usuario entity.
      *
      * @Route("/{id}", name="usuario_delete")
@@ -168,9 +201,10 @@ class usuarioController extends Controller
             ->setAction($this->generateUrl('usuario_delete', array('id' => $usuario->getId())))
             ->setMethod('DELETE')
             ->getForm()
-        ;
+            ;
     }
-=======
+
+    /**
      * @Route("/perfil/{idUsuario}")
      */
     public function perfilAction($idUsuario)
@@ -182,5 +216,4 @@ class usuarioController extends Controller
             'usuario'=>$usuario
         ));
     }
->>>>>>> 4ba1e4fdbccff14b22f8fb226b1a4694bb9a89ae
 }

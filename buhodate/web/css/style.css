@@ -28,6 +28,26 @@ h1{
 #pestanas .active{
 
 }
+
+.contenidoBusqueda{
+    width: 1800px;
+    max-width: 150%;
+    padding: 1cm 1cm 1cm 1cm;
+    margin: 2px 2px 2cm 2cm;
+
+}
+.boton3{
+    width: 5cm;
+    height: 1cm;
+    background: #ff7a55;
+    border: none;
+    border-radius: 25px;
+    font-size: 100%;
+    color: #ffffff;
+    opacity: 0.8;
+    padding: 1%;
+}
+
 .logo{
     max-width: 250px;
     height: 80px;
