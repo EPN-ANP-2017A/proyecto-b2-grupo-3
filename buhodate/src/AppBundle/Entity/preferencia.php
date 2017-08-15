@@ -3,6 +3,7 @@
 namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Doctrine\Common\Collections\ArrayCollection;
 
 /**
  * preferencia
@@ -24,7 +25,7 @@ class preferencia
     /**
      * @var string
      *
-     * @ORM\Column(name="tipo", type="string", length=50, nullable=true)
+     * @ORM\Column(name="tipo", type="string", length=255, nullable=true)
      */
     private $tipo;
 
@@ -38,9 +39,10 @@ class preferencia
     /**
      * @var string
      *
-     * @ORM\Column(name="estado", type="string", length=50)
+     * @ORM\Column(name="estado", type="string", length=20)
      */
     private $estado;
+
 
 
     /**

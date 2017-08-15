@@ -6,6 +6,7 @@ use AppBundle\Entity\cita;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;use Symfony\Component\HttpFoundation\Request;
+use AppBundle\Entity\User;
 
 /**
  * Citum controller.
@@ -26,34 +27,45 @@ class citaController extends Controller
 
         $citas = $em->getRepository('AppBundle:cita')->findAll();
 
-        return $this->render('cita/inicio.html.twig', array(
+        return $this->render('cita/index.html.twig', array(
             'citas' => $citas,
         ));
     }
 
     /**
-     * Creates a new citum entity.
+     * Creates a new cita entity.
      *
-     * @Route("/new", name="cita_new")
+     * @Route("/{id}/new", name="cita_new")
      * @Method({"GET", "POST"})
      */
-    public function newAction(Request $request)
+    public function newAction(Request $request, User $user)
     {
-        $citum = new Citum();
-        $form = $this->createForm('AppBundle\Form\citaType', $citum);
+        $usuario = $this->getUser();
+
+        $cita = new cita();
+        $form = $this->createForm('AppBundle\Form\citaType', $cita);
         $form->handleRequest($request);
 
+        dump($user);
+
         if ($form->isSubmitted() && $form->isValid()) {
+
+            $cita->setEstado('pendiente');
+            $cita->setUsuarios($usuario);
+            $cita->setIdReceptor($user->getId());
+
             $em = $this->getDoctrine()->getManager();
-            $em->persist($citum);
+            $em->persist($cita);
             $em->flush();
 
-            return $this->redirectToRoute('cita_show', array('id' => $citum->getId()));
+            return $this->redirectToRoute('cita_show', array('id' => $cita->getId()));
         }
 
         return $this->render('cita/new.html.twig', array(
-            'citum' => $citum,
+            'cita' => $cita,
             'form' => $form->createView(),
+            'usuario' => $usuario,
+            'receptor' => $user
         ));
     }
 
@@ -63,12 +75,12 @@ class citaController extends Controller
      * @Route("/{id}", name="cita_show")
      * @Method("GET")
      */
-    public function showAction(cita $citum)
+    public function showAction(cita $cita)
     {
-        $deleteForm = $this->createDeleteForm($citum);
+        $deleteForm = $this->createDeleteForm($cita);
 
         return $this->render('cita/show.html.twig', array(
-            'citum' => $citum,
+            'cita' => $cita,
             'delete_form' => $deleteForm->createView(),
         ));
     }
@@ -79,20 +91,20 @@ class citaController extends Controller
      * @Route("/{id}/edit", name="cita_edit")
      * @Method({"GET", "POST"})
      */
-    public function editAction(Request $request, cita $citum)
+    public function editAction(Request $request, cita $cita)
     {
-        $deleteForm = $this->createDeleteForm($citum);
-        $editForm = $this->createForm('AppBundle\Form\citaType', $citum);
+        $deleteForm = $this->createDeleteForm($cita);
+        $editForm = $this->createForm('AppBundle\Form\citaType', $cita);
         $editForm->handleRequest($request);
 
         if ($editForm->isSubmitted() && $editForm->isValid()) {
             $this->getDoctrine()->getManager()->flush();
 
-            return $this->redirectToRoute('cita_edit', array('id' => $citum->getId()));
+            return $this->redirectToRoute('cita_edit', array('id' => $cita->getId()));
         }
 
         return $this->render('cita/edit.html.twig', array(
-            'citum' => $citum,
+            'cita' => $cita,
             'edit_form' => $editForm->createView(),
             'delete_form' => $deleteForm->createView(),
         ));
@@ -104,14 +116,14 @@ class citaController extends Controller
      * @Route("/{id}", name="cita_delete")
      * @Method("DELETE")
      */
-    public function deleteAction(Request $request, cita $citum)
+    public function deleteAction(Request $request, cita $cita)
     {
-        $form = $this->createDeleteForm($citum);
+        $form = $this->createDeleteForm($cita);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
             $em = $this->getDoctrine()->getManager();
-            $em->remove($citum);
+            $em->remove($cita);
             $em->flush();
         }
 
@@ -121,14 +133,14 @@ class citaController extends Controller
     /**
      * Creates a form to delete a citum entity.
      *
-     * @param cita $citum The citum entity
+     * @param cita $citas The citas entity
      *
      * @return \Symfony\Component\Form\Form The form
      */
-    private function createDeleteForm(cita $citum)
+    private function createDeleteForm(cita $citas)
     {
         return $this->createFormBuilder()
-            ->setAction($this->generateUrl('cita_delete', array('id' => $citum->getId())))
+            ->setAction($this->generateUrl('cita_delete', array('id' => $citas->getId())))
             ->setMethod('DELETE')
             ->getForm()
         ;

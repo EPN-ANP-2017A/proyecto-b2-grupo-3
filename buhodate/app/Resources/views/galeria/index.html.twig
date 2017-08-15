@@ -8,27 +8,27 @@
             <tr>
                 <th>Id</th>
                 <th>Foto</th>
+                <th>Tipo</th>
                 <th>Descripcion</th>
                 <th>Estado</th>
-                <th>Tipo</th>
                 <th>Actions</th>
             </tr>
         </thead>
         <tbody>
-        {% for galerium in galerias %}
+        {% for galeria in galerias %}
             <tr>
-                <td><a href="{{ path('galeria_show', { 'id': galerium.id }) }}">{{ galerium.id }}</a></td>
-                <td>{{ galerium.foto }}</td>
-                <td>{{ galerium.descripcion }}</td>
-                <td>{{ galerium.estado }}</td>
-                <td>{{ galerium.tipo }}</td>
+                <td><a href="{{ path('galeria_show', { 'id': galeria.id }) }}">{{ galeria.id }}</a></td>
+                <td><img src="{{ asset('imagen_directory' ~ galeria.foto) }}"></td>
+                <td>{{ galeria.tipo }}</td>
+                <td>{{ galeria.descripcion }}</td>
+                <td>{{ galeria.estado }}</td>
                 <td>
                     <ul>
                         <li>
-                            <a href="{{ path('galeria_show', { 'id': galerium.id }) }}">show</a>
+                            <a href="{{ path('galeria_show', { 'id': galeria.id }) }}">show</a>
                         </li>
                         <li>
-                            <a href="{{ path('galeria_edit', { 'id': galerium.id }) }}">edit</a>
+                            <a href="{{ path('galeria_edit', { 'id': galeria.id }) }}">edit</a>
                         </li>
                     </ul>
                 </td>

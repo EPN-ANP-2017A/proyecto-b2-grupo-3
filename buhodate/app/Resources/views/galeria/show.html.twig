@@ -1,4 +1,4 @@
-{% extends 'base.html.twig' %}
+{% extends 'menu.html.twig' %}
 
 {% block body %}
     <h1>Galerium</h1>
@@ -7,23 +7,23 @@
         <tbody>
             <tr>
                 <th>Id</th>
-                <td>{{ galerium.id }}</td>
+                <td>{{ galeria.id }}</td>
             </tr>
             <tr>
                 <th>Foto</th>
-                <td>{{ galerium.foto }}</td>
-            </tr>
-            <tr>
-                <th>Descripcion</th>
-                <td>{{ galerium.descripcion }}</td>
-            </tr>
-            <tr>
-                <th>Estado</th>
-                <td>{{ galerium.estado }}</td>
+                <td><img src="{{ asset(galeria.foto) }}" alt="" width="512" height="512"></td>
             </tr>
             <tr>
                 <th>Tipo</th>
-                <td>{{ galerium.tipo }}</td>
+                <td>{{ galeria.tipo }}</td>
+            </tr>
+            <tr>
+                <th>Descripcion</th>
+                <td>{{ galeria.descripcion }}</td>
+            </tr>
+            <tr>
+                <th>Estado</th>
+                <td>{{ galeria.estado }}</td>
             </tr>
         </tbody>
     </table>
@@ -33,7 +33,7 @@
             <a href="{{ path('galeria_index') }}">Back to the list</a>
         </li>
         <li>
-            <a href="{{ path('galeria_edit', { 'id': galerium.id }) }}">Edit</a>
+            <a href="{{ path('galeria_edit', { 'id': galeria.id }) }}">Edit</a>
         </li>
         <li>
             {{ form_start(delete_form) }}

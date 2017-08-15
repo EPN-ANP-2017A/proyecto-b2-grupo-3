@@ -5,6 +5,8 @@ namespace AppBundle\Form;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Component\Form\Extension\Core\Type\DateTimeType;
+use Symfony\Component\Form\Extension\Core\Type\TextType;
 
 class citaType extends AbstractType
 {
@@ -13,7 +15,14 @@ class citaType extends AbstractType
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder->add('idEmisor')->add('idReceptor')->add('estado')->add('fInicio')->add('fFin')->add('direccion')->add('calificacion')->add('usuario');
+        $builder
+            ->add('fecha', DateTimeType::class, array(
+                'placeholder' => array(
+                    'year' => 'Año', 'month' => 'Mes', 'day' => 'Día',
+                    'hour' => 'Hora', 'minute' => 'Minutos', 'second' => 'Segundos',
+                )
+            ))
+            ->add('direccion', TextType::class);
     }
     
     /**

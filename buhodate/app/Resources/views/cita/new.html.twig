@@ -1,16 +1,54 @@
-{% extends 'base.html.twig' %}
+{% extends 'menu.html.twig' %}
 
 {% block body %}
-    <h1>Citum creation</h1>
+    <div class="row">
+        <div class="col text-center">
+            <h2> Hola {{ usuario.nombre }}</h2>
+            <h5 class="text-muted">Estas a pocos pasos de enviar una solicitud de cita a <strong>{{ receptor.username }}</strong>
+                <br> por favor añade esta información necesaria</h5>
+        </div>
+    </div>
 
-    {{ form_start(form) }}
-        {{ form_widget(form) }}
-        <input type="submit" value="Create" />
+    {# -- COMIENZA EL FORMULARIO -- #}
+
+    <div class="row">
+        <div class="col">
+            {{ form_start(form, { 'attr' : {
+                'id' : 'crearCita',
+                'class' : 'form-group',
+            }}) }}
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-lg-3 col-sm-12">
+            <h3>Fecha y Hora: </h3>
+        </div>
+        <div class="col-lg-9 col-sm-12">
+            {{ form_widget(form.fecha, { 'attr' : {
+                'class' : 'form-control'
+            }}) }}
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-lg-3 col-sm-12">
+            <h3>Dirección: </h3>
+        </div>
+        <div class="col-lg-9 col-sm-12">
+            {{ form_widget(form.direccion, { 'attr' : {
+                'class' : 'form-control'
+            }}) }}
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-lg-6 col-sm-12">
+            <input class=" btn btn-success" type="submit" value="Enviar" />
+        </div>
+        <div class="col-lg-6 col-sm-12">
+            <a class="btn btn-warning" href=" {{ path('usuario_index') }}">Cancelar</a>
+        </div>
+    </div>
+
+
     {{ form_end(form) }}
 
-    <ul>
-        <li>
-            <a href="{{ path('cita_index') }}">Back to the list</a>
-        </li>
-    </ul>
 {% endblock %}

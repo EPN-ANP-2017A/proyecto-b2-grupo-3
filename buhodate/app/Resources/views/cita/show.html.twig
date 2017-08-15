@@ -1,4 +1,4 @@
-{% extends 'base.html.twig' %}
+{% extends 'menu.html.twig' %}
 
 {% block body %}
     <h1>Citum</h1>
@@ -7,35 +7,23 @@
         <tbody>
             <tr>
                 <th>Id</th>
-                <td>{{ citum.id }}</td>
-            </tr>
-            <tr>
-                <th>Idemisor</th>
-                <td>{{ citum.idEmisor }}</td>
+                <td>{{ cita.id }}</td>
             </tr>
             <tr>
                 <th>Idreceptor</th>
-                <td>{{ citum.idReceptor }}</td>
+                <td>{{ cita.idReceptor }}</td>
             </tr>
             <tr>
-                <th>Estado</th>
-                <td>{{ citum.estado }}</td>
-            </tr>
-            <tr>
-                <th>Finicio</th>
-                <td>{% if citum.fInicio %}{{ citum.fInicio|date('Y-m-d H:i:s') }}{% endif %}</td>
-            </tr>
-            <tr>
-                <th>Ffin</th>
-                <td>{% if citum.fFin %}{{ citum.fFin|date('Y-m-d H:i:s') }}{% endif %}</td>
+                <th>Fecha</th>
+                <td>{% if cita.fecha %}{{ cita.fecha|date('Y-m-d') }}{% endif %}</td>
             </tr>
             <tr>
                 <th>Direccion</th>
-                <td>{{ citum.direccion }}</td>
+                <td>{{ cita.direccion }}</td>
             </tr>
             <tr>
-                <th>Calificacion</th>
-                <td>{{ citum.calificacion }}</td>
+                <th>Estado</th>
+                <td>{{ cita.estado }}</td>
             </tr>
         </tbody>
     </table>
@@ -45,7 +33,7 @@
             <a href="{{ path('cita_index') }}">Back to the list</a>
         </li>
         <li>
-            <a href="{{ path('cita_edit', { 'id': citum.id }) }}">Edit</a>
+            <a href="{{ path('cita_edit', { 'id': cita.id }) }}">Edit</a>
         </li>
         <li>
             {{ form_start(delete_form) }}

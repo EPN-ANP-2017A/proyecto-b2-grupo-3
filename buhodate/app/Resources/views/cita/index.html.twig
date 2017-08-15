@@ -7,34 +7,28 @@
         <thead>
             <tr>
                 <th>Id</th>
-                <th>Idemisor</th>
                 <th>Idreceptor</th>
-                <th>Estado</th>
-                <th>Finicio</th>
-                <th>Ffin</th>
+                <th>Fecha</th>
                 <th>Direccion</th>
-                <th>Calificacion</th>
+                <th>Estado</th>
                 <th>Actions</th>
             </tr>
         </thead>
         <tbody>
         {% for citum in citas %}
             <tr>
-                <td><a href="{{ path('cita_show', { 'id': citum.id }) }}">{{ citum.id }}</a></td>
-                <td>{{ citum.idEmisor }}</td>
-                <td>{{ citum.idReceptor }}</td>
-                <td>{{ citum.estado }}</td>
-                <td>{% if citum.fInicio %}{{ citum.fInicio|date('Y-m-d H:i:s') }}{% endif %}</td>
-                <td>{% if citum.fFin %}{{ citum.fFin|date('Y-m-d H:i:s') }}{% endif %}</td>
-                <td>{{ citum.direccion }}</td>
-                <td>{{ citum.calificacion }}</td>
+                <td><a href="{{ path('cita_show', { 'id': citas.id }) }}">{{ citas.id }}</a></td>
+                <td>{{ citas.idReceptor }}</td>
+                <td>{% if citas.fecha %}{{ citas.fecha|date('Y-m-d') }}{% endif %}</td>
+                <td>{{ citas.direccion }}</td>
+                <td>{{ citas.estado }}</td>
                 <td>
                     <ul>
                         <li>
-                            <a href="{{ path('cita_show', { 'id': citum.id }) }}">show</a>
+                            <a href="{{ path('cita_show', { 'id': citas.id }) }}">show</a>
                         </li>
                         <li>
-                            <a href="{{ path('cita_edit', { 'id': citum.id }) }}">edit</a>
+                            <a href="{{ path('cita_edit', { 'id': cita.id }) }}">edit</a>
                         </li>
                     </ul>
                 </td>

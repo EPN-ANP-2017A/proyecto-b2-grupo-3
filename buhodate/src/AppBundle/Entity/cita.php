@@ -24,57 +24,37 @@ class cita
     /**
      * @var int
      *
-     * @ORM\Column(name="id_Emisor", type="integer")
-     */
-    private $idEmisor;
-
-    /**
-     * @var int
-     *
      * @ORM\Column(name="id_Receptor", type="integer")
      */
     private $idReceptor;
 
     /**
-     * @var string
-     *
-     * @ORM\Column(name="estado", type="string", length=30)
-     */
-    private $estado;
-
-    /**
      * @var \DateTime
      *
-     * @ORM\Column(name="f_inicio", type="datetime")
+     * @ORM\Column(name="fecha", type="date", nullable=true)
      */
-    private $fInicio;
-
-    /**
-     * @var \DateTime
-     *
-     * @ORM\Column(name="f_fin", type="datetime", nullable=true)
-     */
-    private $fFin;
+    private $fecha;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="direccion", type="string", length=100, nullable=true)
+     * @ORM\Column(name="direccion", type="string", length=500, nullable=true)
      */
     private $direccion;
 
     /**
-     * @var int
+     * @var string
      *
-     * @ORM\Column(name="calificacion", type="integer", nullable=true)
+     * @ORM\Column(name="estado", type="string", length=20)
      */
-    private $calificacion;
+    private $estado;
 
     /**
-     * @ORM\ManyToOne(targetEntity="usuario", inversedBy="cita")
+     * @ORM\ManyToOne(targetEntity="User", inversedBy="citas")
      * @ORM\JoinColumn(name="usuario_id", referencedColumnName="id")
      */
-    private $usuario;
+    private $usuarios;
+
 
     /**
      * Get id
@@ -84,30 +64,6 @@ class cita
     public function getId()
     {
         return $this->id;
-    }
-
-    /**
-     * Set idEmisor
-     *
-     * @param integer $idEmisor
-     *
-     * @return cita
-     */
-    public function setIdEmisor($idEmisor)
-    {
-        $this->idEmisor = $idEmisor;
-
-        return $this;
-    }
-
-    /**
-     * Get idEmisor
-     *
-     * @return int
-     */
-    public function getIdEmisor()
-    {
-        return $this->idEmisor;
     }
 
     /**
@@ -135,75 +91,27 @@ class cita
     }
 
     /**
-     * Set estado
+     * Set fecha
      *
-     * @param string $estado
+     * @param \DateTime $fecha
      *
      * @return cita
      */
-    public function setEstado($estado)
+    public function setFecha($fecha)
     {
-        $this->estado = $estado;
+        $this->fecha = $fecha;
 
         return $this;
     }
 
     /**
-     * Get estado
-     *
-     * @return string
-     */
-    public function getEstado()
-    {
-        return $this->estado;
-    }
-
-    /**
-     * Set fInicio
-     *
-     * @param \DateTime $fInicio
-     *
-     * @return cita
-     */
-    public function setFInicio($fInicio)
-    {
-        $this->fInicio = $fInicio;
-
-        return $this;
-    }
-
-    /**
-     * Get fInicio
+     * Get fecha
      *
      * @return \DateTime
      */
-    public function getFInicio()
+    public function getFecha()
     {
-        return $this->fInicio;
-    }
-
-    /**
-     * Set fFin
-     *
-     * @param \DateTime $fFin
-     *
-     * @return cita
-     */
-    public function setFFin($fFin)
-    {
-        $this->fFin = $fFin;
-
-        return $this;
-    }
-
-    /**
-     * Get fFin
-     *
-     * @return \DateTime
-     */
-    public function getFFin()
-    {
-        return $this->fFin;
+        return $this->fecha;
     }
 
     /**
@@ -231,27 +139,50 @@ class cita
     }
 
     /**
-     * Set calificacion
+     * Set estado
      *
-     * @param integer $calificacion
+     * @param string $estado
      *
      * @return cita
      */
-    public function setCalificacion($calificacion)
+    public function setEstado($estado)
     {
-        $this->calificacion = $calificacion;
+        $this->estado = $estado;
 
         return $this;
     }
 
     /**
-     * Get calificacion
+     * Get estado
      *
-     * @return int
+     * @return string
      */
-    public function getCalificacion()
+    public function getEstado()
     {
-        return $this->calificacion;
+        return $this->estado;
+    }
+
+    /**
+     * Set usuarios
+     *
+     * @param \AppBundle\Entity\User $usuarios
+     *
+     * @return cita
+     */
+    public function setUsuarios(\AppBundle\Entity\User $usuarios = null)
+    {
+        $this->usuarios = $usuarios;
+
+        return $this;
+    }
+
+    /**
+     * Get usuarios
+     *
+     * @return \AppBundle\Entity\User
+     */
+    public function getUsuarios()
+    {
+        return $this->usuarios;
     }
 }
-

@@ -24,9 +24,16 @@ class galeria
     /**
      * @var string
      *
-     * @ORM\Column(name="foto", type="string", length=255, nullable=true)
+     * @ORM\Column(name="foto", type="string", length=500, nullable=true)
      */
     private $foto;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="tipo", type="string", length=40, nullable=true)
+     */
+    private $tipo;
 
     /**
      * @var string
@@ -38,25 +45,16 @@ class galeria
     /**
      * @var string
      *
-     * @ORM\Column(name="estado", type="string", length=30)
+     * @ORM\Column(name="estado", type="string", length=20)
      */
     private $estado;
 
     /**
-     * @var string
-     *
-     * @ORM\Column(name="tipo", type="string", length=30)
-     */
-    private $tipo;
-
-    /**
-     * @ORM\ManyToOne(targetEntity="usuario", inversedBy="galeria")
+     * @ORM\ManyToOne(targetEntity="User", inversedBy="galerias")
      * @ORM\JoinColumn(name="usuario_id", referencedColumnName="id")
      */
 
-    //join table many to many
-
-    private $usuario;
+    private $usuarios;
 
     /**
      * Get id
@@ -90,6 +88,30 @@ class galeria
     public function getFoto()
     {
         return $this->foto;
+    }
+
+    /**
+     * Set tipo
+     *
+     * @param string $tipo
+     *
+     * @return galeria
+     */
+    public function setTipo($tipo)
+    {
+        $this->tipo = $tipo;
+
+        return $this;
+    }
+
+    /**
+     * Get tipo
+     *
+     * @return string
+     */
+    public function getTipo()
+    {
+        return $this->tipo;
     }
 
     /**
@@ -140,28 +162,29 @@ class galeria
         return $this->estado;
     }
 
+
+
     /**
-     * Set tipo
+     * Set usuarios
      *
-     * @param string $tipo
+     * @param \AppBundle\Entity\User $usuarios
      *
      * @return galeria
      */
-    public function setTipo($tipo)
+    public function setUsuarios(\AppBundle\Entity\User $usuarios = null)
     {
-        $this->tipo = $tipo;
+        $this->usuarios = $usuarios;
 
         return $this;
     }
 
     /**
-     * Get tipo
+     * Get usuarios
      *
-     * @return string
+     * @return \AppBundle\Entity\User
      */
-    public function getTipo()
+    public function getUsuarios()
     {
-        return $this->tipo;
+        return $this->usuarios;
     }
 }
-
