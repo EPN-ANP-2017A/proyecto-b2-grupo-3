@@ -35,7 +35,7 @@ class citaController extends Controller
     /**
      * Creates a new cita entity.
      *
-     * @Route("/{id}/new", name="cita_new")
+     * @Route("/new/{id}", name="cita_new")
      * @Method({"GET", "POST"})
      */
     public function newAction(Request $request, User $user)

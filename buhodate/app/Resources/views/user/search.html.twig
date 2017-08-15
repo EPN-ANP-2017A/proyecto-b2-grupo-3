@@ -1,0 +1,45 @@
+{% extends 'menu.html.twig' %}
+
+{% block body%}
+    <h1>Busqueda de citas</h1>
+
+    <br>
+    <div class="col-xl-8">
+        <div class="table">
+            <table>
+                <tbody border="2">
+                {% for usuario in usuarios %}
+                    <tr>
+                        <td width="30%">
+                            Ira la foto
+                            <a href="{{ path('usuario_perfil', { 'id': usuario.id }) }}">{{ usuario.id }}</a>
+                        </td>
+                        <td width="50%">{{ usuario.username }}
+                            <br>
+                            {{ usuario.carrera }}
+                            <p>{{ usuario.descripcion }}</p>
+
+                        </td>
+                        <td width="3%">
+                            <p>
+
+
+                            </p>
+                            <input  type="submit" class="boton1" onclick="location.href='{{ path('usuario_perfil', { 'id': usuario.id }) }}'" value="Mirar perfil">
+                        </td>
+                        <td width="3%">
+                            <p>
+
+
+                            </p>
+                            <input class="boton1" type="submit" onclick="location.href='{{ path('cita_new', { 'id': usuario.id }) }}'" value="Solicitar Cita">
+                        </td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+{% endblock  %}
+
+

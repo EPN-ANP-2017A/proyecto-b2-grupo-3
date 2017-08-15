@@ -43,6 +43,29 @@
         </div>
     </div>
 
+    <form action="{{ path('buscar_usuario')}}" method="get">
+        <div align="right">
+            <input type="text" name="busqueda" id="busqueda"> <input type="submit" value="Buscar">
+        </div>
+    </form>
+    <div align="right">
+    <table>
+        <tbody>
+        <tr>
+            <td width="30%">
+                <input type="radio" name="buscar" value="Hombre" onclick="location.href='{{ path('buscar_usuarioS', { 'sexo': 'Hombre' }) }}'">Hombres
+            </td>
+            <td width="30%">
+                <input type="radio" name="buscar" value="Mujeres" onclick="location.href='{{ path('buscar_usuarioS', { 'sexo': 'Mujer' }) }}'">  Mujeres
+            </td>
+            <td width="30%">
+                <input type="radio" name="buscar" value="Ambos" onclick="location.href='{{ path('buscar_usuarioS', { 'sexo': 'ambos' }) }}'"> Ambos
+            </td>
+        </tr>
+    </table>
+    </div>
+
+
     {% block body %}{% endblock %}
 
 </div>
