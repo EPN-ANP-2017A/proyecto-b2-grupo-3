@@ -25,16 +25,18 @@
 
 
                             </p>
-                            <input  type="submit" class="boton1" onclick="location.href='{{ path('usuario_perfil', { 'id': usuario.id }) }}'" value="Mirar perfil">
+                            <input  type="submit" class="boton3" onclick="location.href='{{ path('usuario_perfil', { 'id': usuario.id }) }}'" value="Mirar perfil">
                         </td>
                         <td width="3%">
                             <p>
 
 
                             </p>
-                            <input class="boton1" type="submit" onclick="location.href='{{ path('cita_new', { 'id': usuario.id }) }}'" value="Solicitar Cita">
+                            <input class="boton3" type="submit" onclick="location.href='{{ path('cita_new', { 'id': usuario.id }) }}'" value="Solicitar Cita">
                         </td>
                     </tr>
+                </tbody>
+            </table>
                 {% endfor %}
                 </tbody>
             </table>

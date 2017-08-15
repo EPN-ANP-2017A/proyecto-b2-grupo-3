@@ -2,7 +2,7 @@
 
 namespace AppBundle\Controller;
 
-use AppBundle\Entity\usuario;
+use AppBundle\Entity\user;
 use Doctrine\ORM\Mapping\Entity;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
@@ -26,7 +26,7 @@ class BuscadorController extends Controller
         {
             $usuarios = $em->getRepository('AppBundle:user')->findBy(array('sexo'=> $sexo));
         }
-        return $this->render('user/search.html.twig', array(
+        return $this->render('Buscador/search.html.twig', array(
             'usuarios' => $usuarios,
         ));
     }
@@ -58,7 +58,7 @@ class BuscadorController extends Controller
 
         }
 
-        return $this->render('user/search.html.twig', array(
+        return $this->render('Buscador/search.html.twig', array(
             'usuarios' => $usuarios,
             'numero' => $numero
         ));

@@ -32,7 +32,7 @@
                     <a class="nav-link" href="#">Citas</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Notificaciones</a>
+                    <a class="nav-link" href="{{ path('notificaciones', { 'receptor': app.user.id }) }}">Notificaciones</a>
                 </li>
                 {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
                 <li class="nav-item">
@@ -49,6 +49,7 @@
         </div>
     </form>
     <div align="right">
+        <br>
     <table>
         <tbody>
         <tr>
