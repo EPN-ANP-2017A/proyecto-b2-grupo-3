@@ -1,0 +1,44 @@
+{% extends 'menu.html.twig' %}
+
+{% block body %}
+
+    <div class="row">
+        <div class="col">
+            <h3 class="text-muted text-center" style="margin-bottom: 3%;">Tus notificaciones</h3>
+        </div>
+    </div>
+    {% for citas in citas %}
+        <div class="row">
+            {% for usuario in usuarios %}
+
+                {% if (user.id == citas.idReceptor) and (usuario.id == citas.usuarios.id) and (citas.estado == "pendiente") %}
+                    <div class="col-lg-4 col-md-6 col-sm-12 col-12">
+                        {% for foto in galerias %}
+                            {% if foto.usuarios.id == citas.usuarios.id%}
+                                <img style="margin-left: 35%" class="imagenPerfil" src="{{ foto.foto }}" alt="Foto Perfil" width="150" height="150">
+                            {% endif %}
+                        {% endfor %}
+                    </div>
+                    <div id="citainfo" class="col-lg-5 col-md-6 col-sm-12 col-12">
+                        <p class="card-text">Hola <strong>{{ citas.usuarios.username }} </strong>ha solicitado una cita contigo</p>
+                        <p class="card-text"><strong>Fecha: </strong>{% if citas.fecha %}{{ citas.fecha|date('Y-m-d') }}{% endif %} </p>
+                        <p class="card-text"><strong>Hora: </strong>{% if citas.fecha %}{{ citas.fecha|date('H:i:s') }}{% endif %} </p>
+                        <p class="card-text"><strong>Dirección: </strong>{{ citas.direccion }}</p>
+                    </div>
+                    <div id="aceptarrechazar" class="col-lg-3 col-md-12 col-sm-12 text-center">
+                        <div class="aceptar">
+                            <a class="boton3" href="{{ path('cita_mod', { 'id_cita': citas.id }) }}">Aceptar</a>
+                        </div>
+                        <div class="rechazar">
+                            <a class="boton2" href="{{ path('cita_mod', { 'id_cita': citas.id }) }}">Cancelar</a>
+                        </div>
+                    </div>
+                    <hr class="jumbotron-hr" style="width: 80%;">
+
+                {% endif %}
+            {% endfor %}
+
+        </div>
+
+    {% endfor %}
+{% endblock %}

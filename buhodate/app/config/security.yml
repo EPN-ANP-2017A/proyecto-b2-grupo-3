@@ -24,9 +24,11 @@ security:
 
     access_control:
             - { path: ^/login$, role: IS_AUTHENTICATED_ANONYMOUSLY }
-            - { path: ^/registro , role: IS_AUTHENTICATED_ANONYMOUSLY }
+            - { path: ^/registro, role: IS_AUTHENTICATED_ANONYMOUSLY }
             - { path: ^/resetting, role: IS_AUTHENTICATED_ANONYMOUSLY }
             - { path: ^/admin/, role: ROLE_ADMIN }
+            - { path: ^/cita/galeria/usuario, role: IS_AUTHENTICATED_FULLY }
+
     encoders:
             FOS\UserBundle\Model\UserInterface: bcrypt
 

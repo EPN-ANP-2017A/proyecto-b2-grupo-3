@@ -1,5 +1,4 @@
 <?php
-
 namespace AppBundle\Form;
 
 use Symfony\Component\Form\AbstractType;
@@ -22,9 +21,9 @@ class UserType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('nombre', TextType::class)
-            ->add('apellido', TextType::class)
-            ->add('fono', NumberType::class)
+            ->add('nombre', TextType::class, ['required'=> false])
+            ->add('apellido', TextType::class, ['required'=> false])
+            ->add('fono', NumberType::class, ['required'=> false])
             ->add('sexo', ChoiceType::class, array(
                 'choices'=> array(
                     'Hombre'=>'Hombre',
@@ -38,16 +37,16 @@ class UserType extends AbstractType
                 'widget' => 'choice',
                 'placeholder' => array(
                     'years' => 'Año', 'month' => 'Mes', 'day' => 'Día'
-                )
+                ),
             ))
             ->add('pais', CountryType::class, array(
                 "preferred_choices" => array(
                     "EC" => "Ecuador"
                 ),
             ))
-            ->add('provincia', TextType::class)
-            ->add('ciudad',TextType::class)
-            ->add('direccion',TextType::class)
+            ->add('provincia', TextType::class, ['required'=> false])
+            ->add('ciudad',TextType::class, ['required'=> false])
+            ->add('direccion',TextType::class, ['required'=> false])
             ->add('carrera', ChoiceType::class, array(
                 'choices'  => array(
                     'Agua y Saneamiento' => 'Agua y Saneamiento',
@@ -56,13 +55,13 @@ class UserType extends AbstractType
                     'Electromecánica' => 'Electromecánica',
                 ),
             ))
-            ->add('descripcion', TextareaType::class);
-            /*->add('foto',FileType::class, array(
-                'mapped' => false,
-                'required' => false
-            ));*/
+            ->add('descripcion', TextareaType::class, ['required'=> false]);
+        /*->add('foto',FileType::class, array(
+            'mapped' => false,
+            'required' => false
+        ));*/
     }
-    
+
     /**
      * {@inheritdoc}
      */
@@ -72,7 +71,6 @@ class UserType extends AbstractType
             'data_class' => 'AppBundle\Entity\User'
         ));
     }
-
     /**
      * {@inheritdoc}
      */
@@ -80,6 +78,4 @@ class UserType extends AbstractType
     {
         return 'appbundle_user';
     }
-
-
 }
